@@ -23,7 +23,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        
+        // Add Login View
         setupView()
+        
+        // Add submit button
         addButton()
     }
 
@@ -33,7 +37,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     
     override func viewDidAppear(_ animated: Bool) {
-        // handle current user
+        // handle current user from userdefaults
         if (User.currentUser() != nil){
             onSuccess()
         }
@@ -41,6 +45,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     func setupView(){
         
+        // Show welcome text
         welcome.frame = CGRect(x: 60, y: 50, width: view.bounds.width - 120, height: 150)
         welcome.text = "WELCOME TO MIMO iOS CHALLENGE"
         welcome.textColor = clr_mimo
@@ -50,7 +55,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         self.view.addSubview(welcome)
         
         
-        
+        // Email TextField
         emailTextField = addTextField(y: view.bounds.height/2 ,labelText: "Email Address:")
         emailTextField.delegate = self
         emailTextField.tag = 0
@@ -61,7 +66,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         emailTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
         
-        
+        // Password TextField
         passTextField = addTextField(y: view.bounds.height/2 + view.bounds.height/8,labelText: "Password:")
         passTextField.delegate = self
         passTextField.tag = 1
@@ -71,7 +76,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         passTextField.isSecureTextEntry = true
         
         
-        
+        // Notify if keyboard appears or disappears
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
         

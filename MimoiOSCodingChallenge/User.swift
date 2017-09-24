@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+// Handles the User
 class User {
     static let user = User()
     static let userDefaults = UserDefaults.standard
@@ -25,7 +25,7 @@ class User {
     }
     
     class func currentUser() -> User? {
-        
+        // Read the User email, id and sessionToken from nsdefaults if fails return nil
         guard let id = userDefaults.string(forKey: "id"), let access = userDefaults.string(forKey: "accesstoken"),
             let email = userDefaults.string(forKey: "email") else {
                 return nil
@@ -36,6 +36,7 @@ class User {
     
     
     func initialize(json object: AnyObject,email:String) throws {
+        // Parse the JSON object from API callback
         guard let _ = parseUserJSON(json: object,email: email) else {
             throw NSError.init()
         }
@@ -56,6 +57,7 @@ class User {
     
     
     func storeUserData() {
+        // Store user data on the device
         let userDefaults = UserDefaults.standard
         userDefaults.set(emailaddress!, forKey: "email")
         userDefaults.set(id!, forKey: "id")

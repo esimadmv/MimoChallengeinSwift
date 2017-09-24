@@ -1,3 +1,22 @@
+## About this code
+Files that I have added:
+
+- LoginViewController.Swift
+- User.Swift
+
+Files that I have modified:
+
+- LoginViewController.Swift
+- User.Swift
+- SettingsViewController.h
+- SettingsViewController.m
+- SettingsViewController.Swift
+- AppDelegate.m
+- Podfile
+
+Libraries I used:
+- Alamofire
+
 ## Overview
 
 Download this repo and continue working on this not finished code base.
